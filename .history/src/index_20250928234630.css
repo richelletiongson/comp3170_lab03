@@ -44,10 +44,6 @@ body {
   position: relative;
 }
 
-.book.selected {
-  background-color: darkgray;
-}
-
 .book-image-container {
   height: auto;
   width: 100%;

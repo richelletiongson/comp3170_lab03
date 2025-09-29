@@ -1,9 +1,6 @@
 import './index.css'
-import { useState } from 'react'
 
 function Book(props) {
-    const [isSelected, setIsSelected] = useState(false);
-
     const handleLearnMoreClick = () => {
         if (props.url) {
             window.open(props.url);
@@ -11,20 +8,15 @@ function Book(props) {
     };
 
     const handleRemoveClick = (e) => {
-        e.stopPropagation();
         const card = e.currentTarget.closest('.book');
         if (card) {
             card.remove();
         }
     };
 
-    const handleCardClick = () => {
-        setIsSelected(!isSelected);
-    };
-
     return (
-        <div className={`book${isSelected ? ' selected' : ''}`} onClick={handleCardClick}>
-            <button className="btn-remove" title="Remove" onClick={handleRemoveClick}>Remove</button>
+        <div className="book">
+            <button className="remove-btn" title="Remove" onClick={handleRemoveClick}>×</button>
             <div className="book-image-container">
                 <img src={props.image} alt={props.title} className="book-image" />
             </div>
@@ -34,7 +26,7 @@ function Book(props) {
             <div className="price">
                 <p className="price-amount">{props.price}</p>
             </div>
-            <button className="learn" onClick={(e) => { e.stopPropagation(); handleLearnMoreClick(); }}>
+            <button className="learn" onClick={handleLearnMoreClick}>
                 Learn more
             </button>
         </div>

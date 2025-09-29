@@ -45,7 +45,7 @@ body {
 }
 
 .book.selected {
-  background-color: darkgray;
+  background-color: #2f2f2f;
 }
 
 .book-image-container {

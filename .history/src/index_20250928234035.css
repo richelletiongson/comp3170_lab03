@@ -44,10 +44,6 @@ body {
   position: relative;
 }
 
-.book.selected {
-  background-color: darkgray;
-}
-
 .book-image-container {
   height: auto;
   width: 100%;
@@ -87,16 +83,15 @@ body {
 
 .btn-remove {
   position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 70px;
-  height: 35px;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
   font-family: 'Georgia', 'Times New Roman', serif;
   background: maroon;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
-  border: none;
 }
 
 .new {
