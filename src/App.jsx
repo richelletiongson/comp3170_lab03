@@ -1,35 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
+import Book from './Book'
+import Footer from './Footer'
+import Header from './AppHeader'
+import { useState, useEffect } from 'react'
+import booksData from '../data/books.json'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [bookData, setBookData] = useState(null);
+  const [bookData2, setBookData2] = useState(null);
+
+  useEffect(() => {
+    const getFirstBook = async () => {
+      try {
+        const response = await fetch('https://api.itbook.store/1.0/books/9781642002270');
+        
+        const bookData = await response.json();
+        console.log(JSON.stringify(bookData));
+        
+        setBookData(bookData);
+      } catch (error) {
+        console.log("the error is " + error);
+      }
+    };
+
+    const getSecondBook = async () => {
+      try {
+        const response = await fetch('https://api.itbook.store/1.0/books/9781484241844');
+        
+        const bookData = await response.json();
+        console.log(JSON.stringify(bookData));
+        
+        setBookData2(bookData);
+      } catch (error) {
+        console.log("the error is " + error);
+      }
+    };
+
+    getFirstBook();
+    getSecondBook();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">    
+      <Header></Header>  
+      <main className="main-content">
+        <div className="content">
+          <div className="new-button-column">
+            <button className="new">New</button>
+          </div>
+          
+          <div className="books-container">
+            {bookData && (
+              <Book 
+                image={bookData.image}
+                price={bookData.price}
+                url={bookData.url}
+              />
+            )}
+            
+            {bookData2 && (
+              <Book 
+                image={bookData2.image}
+                price={bookData2.price}
+                url={bookData2.url}
+              />
+            )}
+    
+            {booksData.slice(0, 8).map((book, index) => (
+              <Book 
+                key={book.isbn13}
+                image={book.image}
+                price={book.price}
+                url={book.url}
+              />
+            ))}
+          </div>
+        </div>
+      </main>
+      <Footer></Footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
