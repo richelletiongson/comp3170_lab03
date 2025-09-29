@@ -3,7 +3,6 @@ import Book from './Book'
 import Footer from './Footer'
 import Header from './AppHeader'
 import AddBook from './AddBook'
-import Modal from './Modal'
 import { useState, useEffect } from 'react'
 import booksData from '../data/books.json'
 
@@ -43,26 +42,14 @@ function App() {
     getSecondBook();
   }, []);
 
-  const handleNewButtonClick = () => {
-    setShowAddBook(!showAddBook);
-  };
-
   return (
     <div className="app">    
       <Header></Header>  
       <main className="main-content">
         <div className="content">
           <div className="new-button-column">
-            <button className="new" onClick={handleNewButtonClick}>New</button>
+            <button className="new">New</button>
           </div>
-          
-          <Modal 
-            isOpen={showAddBook} 
-            onClose={() => setShowAddBook(false)}
-            title="Add Book"
-          >
-            <AddBook />
-          </Modal>
           
           <div className="books-container">
             {bookData && (

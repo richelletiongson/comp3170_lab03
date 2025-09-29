@@ -61,7 +61,7 @@ function App() {
             onClose={() => setShowAddBook(false)}
             title="Add Book"
           >
-            <AddBook />
+            <AddBook onSave={() => setShowAddBook(false)} />
           </Modal>
           
           <div className="books-container">

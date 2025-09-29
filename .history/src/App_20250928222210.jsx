@@ -56,13 +56,7 @@ function App() {
             <button className="new" onClick={handleNewButtonClick}>New</button>
           </div>
           
-          <Modal 
-            isOpen={showAddBook} 
-            onClose={() => setShowAddBook(false)}
-            title="Add Book"
-          >
-            <AddBook />
-          </Modal>
+          {showAddBook && <AddBook />}
           
           <div className="books-container">
             {bookData && (

@@ -139,11 +139,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
 }
 
@@ -157,7 +157,6 @@ body {
 
 .modal-header {
   padding: 2rem;
-  padding-bottom: 0;
 }
 
 .modal-header h2 {
@@ -222,22 +221,28 @@ body {
   }
 } 
 
+/* Form field styles for Add Book */
 .form-container input[type="text"],
 .form-container input[type="number"] {
   height: 40px;
   padding: 0 1em;
-  border: 1px solid black;
+  border: 2px solid #000;
+  width: 22em;
   font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 18px;
+  font-size: 1rem;
   background: #fff;
 }
 
 .btn.primary {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  background: darkgreen;
+  background: #2c7a52;
   color: #fff;
   border: none;
   padding: 0.8em 2.5em;
-  font-size: 1rem;
+  font-weight: bold;
   letter-spacing: .05em;
+  cursor: pointer;
+}
+
+.btn.primary:hover {
+  background: #256846;
 }
